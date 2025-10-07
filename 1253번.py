@@ -1,28 +1,26 @@
 import sys
 input = sys.stdin.readline
+N = int(input())
+Result = 0
+A = list(map(int, input().split()))
+A.sort()
 
-n = int(input())
-numlist = list(map(int, input().split()))
-
-count = 0
-numlist.sort()
-
-for initial_index in range(n):
-    find = numlist[initial_index]
-    start_index = 0
-    end_index = n - 1
-    while(start_index < end_index):
-        if(numlist[start_index] + numlist[end_index] == find):
-            if start_index != initial_index and end_index != initial_index:
-                count = count + 1
+for k in range(N):
+    find = A[k]
+    i = 0
+    j = N - 1
+    while i < j:
+        if A[i] + A[j] == find:
+            if i != k and j != k:
+                Result += 1
                 break
-            elif start_index == initial_index:
-                start_index = start_index + 1
-            elif end_index == initial_index:
-                end_index = end_index -1
-        elif(numlist[start_index] + numlist[end_index] < find):
-            start_index = start_index + 1
+            elif i == k:
+                i += 1
+            elif j == k:
+                j -= 1
+        elif A[i] + A[j] < find:
+            i += 1
         else:
-            end_index = end_index - 1
+            j -= 1
 
-print(count)
+print(Result)

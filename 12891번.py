@@ -41,13 +41,12 @@ def myremove(c):
             checkSecret -= 1
         myList[3] -= 1
 
-
 S, P = map(int, input().split())
 Result = 0
 A = list(input())
 checkList = list(map(int, input().split()))
 
-for i in  range(4):
+for i in range(4):
     if checkList[i] == 0:
         checkSecret += 1
 

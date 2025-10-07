@@ -13,6 +13,6 @@ for i in range(N):
             print('0\n')
         else:
             temp = myQueue.get()
-            print(str((temp[1]))+'\n')
+            print(str((temp[1])) + '\n')
     else:
         myQueue.put((abs(request), request))

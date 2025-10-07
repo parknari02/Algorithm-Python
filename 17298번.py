@@ -12,11 +12,9 @@ for i in range(n):
 while myStack:
     ans[myStack.pop()] = -1
 
-
 result = ""
 
 for i in range(n):
     result += str(ans[i])+" "
-
 
 print(result)

@@ -1,23 +1,22 @@
 import sys
 input = sys.stdin.readline
-
-N, M = map(int, input().split())
-numlist = list(map(int, input().split()))
-sumlist = [numlist[0]]
-reminderlist = [0] * M
+n, m = map(int, input().split())
+A = list(map(int, input().split()))
+S = [0] * n
+C = [0] * m
 answer = 0
 
-for i in range(1, N):
-    sumlist.append(sumlist[i-1] + numlist[i])
+for i in range(1, n):
+    S[i] = S[i-1] + A[i]
 
-for j in range(N):
-    reminder = sumlist[j] % M
-    if reminder == 0:
-        answer = answer + 1
-    reminderlist[reminder] = reminderlist[reminder] + 1
-    
-for k in range(M):
-    if (reminderlist[k]):
-        answer = answer + ((reminderlist[k] * (reminderlist[k] - 1)) // 2 )
+for i in range(n):
+    remainder = S[i] % m
+    if remainder == 0:
+        answer += 1
+    C[remainder] += 1
+
+for i in range(m):
+    if C[i] > 1:
+        answer += (C[i] * C[i-1] // 2)
 
 print(answer)

@@ -1,21 +1,21 @@
 import sys
 input = sys.stdin.readline
-
-n = int(input())
-sum_num = int(input())
-ingredients = list(map(int, input().split()))
-ingredients.sort()
-start = 0
-end = len(ingredients) - 1
+N = input(input())
+M = input(input())
+A = list(map(int, input().split()))
+A.sort()
 count = 0
+i = 0
+j = N - 1
 
-while(start != end):
-    if ( ingredients[start] + ingredients[end] < sum_num):
-        start = start + 1
-    elif (ingredients[start] + ingredients[end] == sum_num):
-        count = count + 1
-        start = start + 1
+while i > j:
+    if A[i] + A[j] < M:
+        i += 1
+    elif A[i] + A[j] > M:
+        j -= 1
     else:
-        end = end - 1
+        count += 1
+        i += 1
+        j -= 1
 
 print(count)
